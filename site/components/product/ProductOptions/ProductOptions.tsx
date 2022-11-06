@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { Swatch } from '@components/product'
 import type { ProductOption } from '@commerce/types/product'
 import { SelectedOptions } from '../helpers'
 
@@ -17,32 +16,24 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   return (
     <div>
       {options.map((opt) => (
-        <div className="pb-4" key={opt.displayName}>
-          <h2 className="uppercase font-medium text-sm tracking-wide">
-            {opt.displayName}
-          </h2>
-          <div role="listbox" className="flex flex-row py-4">
-            {opt.values.map((v, i: number) => {
-              const active = selectedOptions[opt.displayName.toLowerCase()]
+        <div className="" key={opt.displayName}>
+          <select
+            value={selectedOptions[opt.displayName.toLowerCase()]!}
+            onChange={(e) =>
+              setSelectedOptions((selectedOptions) => ({
+                ...selectedOptions,
+                [opt.displayName.toLowerCase()]: e.target.value,
+              }))
+            }
+          >
+            {opt.values.map((v, i) => {
               return (
-                <Swatch
-                  key={`${opt.id}-${i}`}
-                  active={v.label.toLowerCase() === active}
-                  variant={opt.displayName}
-                  color={v.hexColors ? v.hexColors[0] : ''}
-                  label={v.label}
-                  onClick={() => {
-                    setSelectedOptions((selectedOptions) => {
-                      return {
-                        ...selectedOptions,
-                        [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
-                      }
-                    })
-                  }}
-                />
+                <option key={`${opt.id}-${i}`} value={v.label.toLowerCase()}>
+                  {v.label}
+                </option>
               )
             })}
-          </div>
+          </select>
         </div>
       ))}
     </div>

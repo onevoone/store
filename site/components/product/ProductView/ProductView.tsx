@@ -10,44 +10,44 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import ProductInformation from '../ProductInformation'
+
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
 }
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
-
   return (
     <>
       <Container className="max-w-none w-full" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            />
-            <div className={s.sliderContainer}>
-              <ProductSlider key={product.id}>
-                {product.images.map((image, i) => (
-                  <div key={image.url} className={s.imageContainer}>
-                    <Image
-                      className={s.img}
-                      src={image.url!}
-                      alt={image.alt || 'Product Image'}
-                      width={600}
-                      height={600}
-                      priority={i === 0}
-                      quality="85"
-                    />
-                  </div>
-                ))}
-              </ProductSlider>
+            <div>
+              {/* {product.images.map((image, i) => (
+                <div key={image.url} className={s.imageContainer}>
+                  <Image
+                    className={s.img}
+                    src={image.url!}
+                    alt={image.alt || 'Product Image'}
+                    width={600}
+                    height={600}
+                    priority={i === 0}
+                    quality="85"
+                  />
+                </div>
+              ))} */}
+              <div className={s.imageContainer}>
+                <Image
+                  className={s.img}
+                  src={product.images[0].url!}
+                  alt={product.images[0].alt || 'Product Image'}
+                  width={600}
+                  height={600}
+                  priority={true}
+                  quality="85"
+                />
+              </div>
             </div>
             {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
@@ -57,8 +57,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               />
             )}
           </div>
-
-          <ProductSidebar
+          <ProductInformation
             key={product.id}
             product={product}
             className={s.sidebar}

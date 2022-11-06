@@ -117,9 +117,13 @@ const Layout: React.FC<Props> = ({
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <Navbar links={navBarlinks} />
-        <main className="fit">{children}</main>
-        <Footer pages={pageProps.pages} />
+        <div className="flex">
+          <Navbar links={navBarlinks} />
+          <main className="fit">{children}</main>
+        </div>
+        {/* <Navbar links={navBarlinks} />
+        <main className="fit">{children}</main> */}
+        <Footer />
         <ModalUI />
         <CheckoutProvider>
           <SidebarUI links={navBarlinks} />
@@ -128,7 +132,7 @@ const Layout: React.FC<Props> = ({
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
           hide={acceptedCookies}
           action={
-            <Button className="mx-5" onClick={() => onAcceptCookies()}>
+            <Button className="mx-5" onClick={onAcceptCookies}>
               Accept cookies
             </Button>
           }
