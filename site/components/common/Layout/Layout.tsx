@@ -117,13 +117,11 @@ const Layout: React.FC<Props> = ({
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <div className="flex">
+        <div className={cn(s.content)}>
           <Navbar links={navBarlinks} />
-          <main className="fit">{children}</main>
+          <main className={cn(s.main)}>{children}</main>
+          <Footer />
         </div>
-        {/* <Navbar links={navBarlinks} />
-        <main className="fit">{children}</main> */}
-        <Footer />
         <ModalUI />
         <CheckoutProvider>
           <SidebarUI links={navBarlinks} />

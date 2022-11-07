@@ -20,38 +20,6 @@ const HomeAllProductsGrid: FC<Props> = ({
 }) => {
   return (
     <div className={s.root}>
-      <div className={s.asideWrapper}>
-        <div className={s.aside}>
-          <ul className="mb-10">
-            <li className="py-1 text-base font-bold tracking-wide">
-              <Link href={getCategoryPath('')}>
-                <a>All Categories</a>
-              </Link>
-            </li>
-            {categories?.map((cat: any) => (
-              <li key={cat.path} className="py-1 text-accent-8 text-base">
-                <Link href={getCategoryPath(cat.path)}>
-                  <a>{cat.name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="">
-            <li className="py-1 text-base font-bold tracking-wide">
-              <Link href={getDesignerPath('')}>
-                <a>All Designers</a>
-              </Link>
-            </li>
-            {brands?.map(({ path, name }) => (
-              <li key={path} className="py-1 text-accent-8 text-base">
-                <Link href={getDesignerPath(path)}>
-                  <a>{name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
       <div className="flex-1">
         <Grid layout="normal">
           {products.map((product) => (

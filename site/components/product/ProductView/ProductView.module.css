@@ -1,11 +1,7 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
-  min-height: auto;
 }
 
 .main {
-  @apply relative px-0 pb-0 box-border  flex flex-col col-span-1;
-  min-height: 500px;
 }
 
 .sidebar {
@@ -41,10 +37,6 @@
 }
 
 @screen lg {
-  .main {
-    @apply mx-0 col-span-8;
-  }
-
   .imageContainer {
     max-height: 600px;
   }

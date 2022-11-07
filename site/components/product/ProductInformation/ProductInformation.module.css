@@ -1,6 +1,5 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
-  min-height: auto;
+  @apply flex flex-col items-center max-w-screen-sm m-auto gap-y-5 mt-6;
 }
 
 .main {
@@ -67,11 +66,11 @@
 
 @screen lg {
   .root {
-    @apply grid-cols-12;
+    /* @apply grid-cols-12; */
   }
 
   .main {
-    @apply mx-0 col-span-8;
+    /* @apply mx-0 col-span-8; */
   }
 
   .imageContainer {

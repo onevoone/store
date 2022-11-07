@@ -1,4 +1,5 @@
 import s from './ProductInformation.module.css'
+import cn from 'clsx'
 import { useAddItem } from '@framework/cart'
 import { FC, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
@@ -14,13 +15,9 @@ import ErrorMessage from '@components/ui/ErrorMessage'
 
 interface ProductInformationProps {
   product: Product
-  className?: string
 }
 
-const ProductInformation: FC<ProductInformationProps> = ({
-  product,
-  className,
-}) => {
+const ProductInformation: FC<ProductInformationProps> = ({ product }) => {
   const addItem = useAddItem()
   const { openSidebar, setSidebarView } = useUI()
   const [loading, setLoading] = useState(false)
@@ -63,36 +60,32 @@ const ProductInformation: FC<ProductInformationProps> = ({
   }
 
   return (
-    <div className={className}>
-      <h3>
+    <div className={s.root}>
+      <h3 className="uppercase">
         <span>{product.name}</span>
       </h3>
       <Text
-        className="break-words w-full max-w-xl"
+        className="break-words text-center uppercase"
         html={product.descriptionHtml || product.description}
       />
-      <div>{`${price} ${product.price?.currencyCode}`}</div>
-
       <ProductOptions
         options={product.options}
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-
+      <p>{`${price} ${product.price?.currencyCode}`}</p>
       <div>
         {error && <ErrorMessage error={error} className="my-5" />}
         {process.env.COMMERCE_CART_ENABLED && (
           <Button
-            aria-label="Add to Cart"
+            aria-label="Purchase"
             type="button"
-            className={s.button}
+            className={cn(s.button, 'uppercase')}
             onClick={addToCart}
             loading={loading}
             disabled={variant?.availableForSale === false}
           >
-            {variant?.availableForSale === false
-              ? 'Not Available'
-              : 'Add To Cart'}
+            {variant?.availableForSale === false ? 'Not Available' : 'Purchase'}
           </Button>
         )}
       </div>

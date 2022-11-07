@@ -1,5 +1,7 @@
 .root {
-  @apply border-t border-accent-2;
+  @apply flex justify-center p-4;
+
+  grid-area: footer;
 }
 
 .link {

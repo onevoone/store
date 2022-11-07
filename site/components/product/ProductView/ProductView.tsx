@@ -20,9 +20,9 @@ interface ProductViewProps {
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   return (
     <>
-      <Container className="max-w-none w-full" clean>
-        <div className={cn(s.root, 'fit')}>
-          <div className={cn(s.main, 'fit')}>
+      <Container className="" clean>
+        <div className={cn(s.root)}>
+          <div className={cn(s.main)}>
             <div>
               {/* {product.images.map((image, i) => (
                 <div key={image.url} className={s.imageContainer}>
@@ -57,11 +57,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               />
             )}
           </div>
-          <ProductInformation
-            key={product.id}
-            product={product}
-            className={s.sidebar}
-          />
+          <ProductInformation key={product.id} product={product} />
         </div>
         <hr className="mt-7 border-accent-2" />
         <section className="py-12 px-6 mb-10">

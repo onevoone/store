@@ -1,9 +1,11 @@
 .root {
-  @apply sticky top-0 bg-primary z-40 transition-all duration-150;
+  @apply sticky top-0 max-h-screen bg-primary z-40 transition-all duration-150 p-5;
+
+  grid-area: sidebar;
 }
 
 .nav {
-  @apply relative flex flex-col justify-between py-4 md:py-4;
+  @apply relative flex flex-col justify-between;
 }
 
 .navMenu {
@@ -13,7 +15,7 @@
 .link {
   @apply inline-flex items-center leading-6
   transition ease-in-out duration-75 cursor-pointer
-  text-accent-5;
+  text-accent-5 uppercase;
 }
 
 .link:hover {

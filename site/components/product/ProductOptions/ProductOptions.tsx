@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import s from './ProductOptions.module.css'
 import type { ProductOption } from '@commerce/types/product'
 import { SelectedOptions } from '../helpers'
 
@@ -14,27 +15,27 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   setSelectedOptions,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-y-5 items-center">
       {options.map((opt) => (
-        <div className="" key={opt.displayName}>
-          <select
-            value={selectedOptions[opt.displayName.toLowerCase()]!}
-            onChange={(e) =>
-              setSelectedOptions((selectedOptions) => ({
-                ...selectedOptions,
-                [opt.displayName.toLowerCase()]: e.target.value,
-              }))
-            }
-          >
-            {opt.values.map((v, i) => {
-              return (
-                <option key={`${opt.id}-${i}`} value={v.label.toLowerCase()}>
-                  {v.label}
-                </option>
-              )
-            })}
-          </select>
-        </div>
+        <select
+          key={opt.displayName}
+          className={s.select}
+          value={selectedOptions[opt.displayName.toLowerCase()]!}
+          onChange={(e) =>
+            setSelectedOptions((selectedOptions) => ({
+              ...selectedOptions,
+              [opt.displayName.toLowerCase()]: e.target.value,
+            }))
+          }
+        >
+          {opt.values.map((v, i) => {
+            return (
+              <option key={`${opt.id}-${i}`} value={v.label.toLowerCase()}>
+                {v.label.toUpperCase()}
+              </option>
+            )
+          })}
+        </select>
       ))}
     </div>
   )

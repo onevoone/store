@@ -20,14 +20,12 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
     <Container clean className="flex-col">
       <div className={s.nav}>
         <div className="flex flex-col items-center flex-1">
-          <Link href="/">
-            <a className={s.logo} aria-label="Logo">
-              Home
-            </a>
-          </Link>
           <nav className="flex flex-col">
+            <Link href="/">
+              <a className={s.link}>HOME</a>
+            </Link>
             <Link href="/search">
-              <a className={s.link}>All</a>
+              <a className={s.link}>ALL</a>
             </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>

@@ -2,3 +2,17 @@
   @apply h-full bg-primary mx-auto transition-colors duration-150;
   max-width: 2460px;
 }
+
+.content {
+  @apply grid;
+
+  grid-template-areas:
+    'sidebar main'
+    'sidebar main'
+    'sidebar footer';
+  grid-template-columns: 170px 1fr;
+}
+
+.main {
+  grid-area: main;
+}

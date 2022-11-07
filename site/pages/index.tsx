@@ -81,8 +81,8 @@ export default function Home({
       </Marquee>
       {/* <HomeAllProductsGrid
         newestProducts={products}
-        categories={categories}
-        brands={brands}
+        // categories={categories}
+        // brands={brands}
       /> */}
     </>
   )
